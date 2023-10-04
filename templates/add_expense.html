@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        /* CSS for dropdown container */
+    .dropdown-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: inline-block;
+    }
+
+    /* CSS for dropdown button */
+    .dropdown-button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-button:hover {
+        background-color: #555;
+    }
+
+    /* CSS for dropdown content (hidden by default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 180px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        right: 0;
+    }
+
+    /* CSS for dropdown options */
+    .dropdown-content button, .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        color: #333;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-content button:hover, .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    /* Show the dropdown content on hover */
+    .dropdown-container:hover .dropdown-content {
+        display: block;
+    }
+
+    </style>
+    <div class="container">
+        <div class="form-container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Add New Expense</h2>
+            <!-- <a href="{{ url_for('logout') }}" class="logout-button" style="display: block; text-align: center; font-size: 16px; margin-top: 5px; color: #333; text-decoration: none; border: 1px solid #333; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">Logout</a> -->
+            
+            <form method="POST" action="{{ url_for('add_expense') }}">
+                <label for="category">Category:</label>
+                <input type="text" name="category" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 3px; font-size: 16px;">
+                
+                <label for="amount">Amount ($):</label>
+                <input type="number" name="amount" step="0.01" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 3px; font-size: 16px;">
+                
+                <button type="submit" class="add-button" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;">Add Expense</button>
+            </form>
+            
+            <!-- Logout button -->
+            
+            <!-- <a href="{{ url_for('logout') }}" class="logout-button" style="position: absolute; top: 10px; right: 10px; font-size: 16px; color: #333; text-decoration: none; border: 1px solid #333; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">Logout</a> -->
+            <!-- Delete User and Logout buttons container -->
+            <div class="dropdown-container">
+                <button class="dropdown-button">Options</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('delete_user') }}" class="delete-user-button"onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">Delete Account</a>
+                    <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+                </div>
+            </div>
+            <!-- Button to go to the dashboard without adding a new expense -->
+            <a href="{{ url_for('dashboard') }}" class="dashboard-button" style="display: block; text-align: center; font-size: 16px; margin-top: 20px; color: #333; text-decoration: none; border: 1px solid #333; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">Go to Dashboard</a>
+        </div>
+    </div>
+{% endblock %}
