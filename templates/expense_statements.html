@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Statements</title>
+    <style>
+        /* Container styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Expense statements styles */
+        .expense-statements {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .expense-statements h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .expense-statements ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .expense-statements li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        /* Back to Dashboard button styles */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <h2 class="dashboard-title">Expense Statements</h2> -->
+
+        <div class="expense-statements">
+            <h3>Expense Statements:</h3>
+            <ul>
+                {% for expense in expense_data %}
+                    <li>{{ expense.category }}: &#8377;{{ expense.amount }} (Date: {{ expense.date }}, Time: {{ expense.time }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="{{ url_for('dashboard') }}" class="button">Back to Dashboard</a>
+    </div>
+</body>
+</html>
