@@ -30,13 +30,12 @@ Expense Tracker is a web application built to help users efficiently manage thei
    git clone https://github.com/your-username/expense-tracker.git
 2. Install the required dependencies:
    ```bash
-      pip install -r requirements.txt
-    
+   pip install -r requirements.txt    
 3. Set up a MongoDB database and configure the connection in config.py.
 
 4. Run the application:
    ```bash
-      python app.py
+   python app.py
 5. Access the application in your web browser at https://expense-tracker-7xzp.onrender.com.
 
 ## Usage
